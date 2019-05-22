@@ -84,4 +84,31 @@ public class User {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (username != null ? !username.equals(user.username) : user.username != null) return false;
+        if (fullname != null ? !fullname.equals(user.fullname) : user.fullname != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (role != null ? !role.equals(user.role) : user.role != null) return false;
+        if (badges != null ? !badges.equals(user.badges) : user.badges != null) return false;
+        return badgesUser != null ? badgesUser.equals(user.badgesUser) : user.badgesUser == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = username != null ? username.hashCode() : 0;
+        result = 31 * result + (fullname != null ? fullname.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (badges != null ? badges.hashCode() : 0);
+        result = 31 * result + (badgesUser != null ? badgesUser.hashCode() : 0);
+        return result;
+    }
 }
