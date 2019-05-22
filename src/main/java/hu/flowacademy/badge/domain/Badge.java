@@ -2,6 +2,7 @@ package hu.flowacademy.badge.domain;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -33,6 +34,9 @@ public class Badge {
 
     public void setUserToBadge(User user) {
         users.add(user);
+    }
+    public Boolean isBadgeContainsUser(User user) {
+        return this.users.contains(user);
     }
 
     public Badge(Long id, String name, byte[] content, User owner) {

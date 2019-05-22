@@ -53,9 +53,13 @@ public class BadgeService {
         if (user == null || badge == null) {
             throw new ValidationException("user id or/and badge id is invalid");
         }
+        if (user.isUserContainsUser(badge) && badge.isBadgeContainsUser(user)) {
+            throw new ValidationException("this pair is alredy exist");
+        }
         user.addBadgeToUser(badge);
         badge.setUserToBadge(user);
         badgeRepository.save(badge);
+        userRepository.save(user);
         return badge;
     }
 

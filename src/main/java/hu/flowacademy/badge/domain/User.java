@@ -30,6 +30,10 @@ public class User {
     @ManyToMany(mappedBy = "users")
     Set<Badge> badgesUser = new HashSet<>();
 
+    public Boolean isUserContainsUser(Badge badge) {
+        return this.badgesUser.contains(badge);
+    }
+
 
     public User() {
     }
